@@ -6,7 +6,7 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 14:42:28 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 15:56:16 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:03:57 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_nbrlen(int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (n == 0)

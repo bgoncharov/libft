@@ -6,7 +6,7 @@
 #    By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/17 18:48:40 by bogoncha          #+#    #+#              #
-#    Updated: 2019/02/20 13:51:05 by bogoncha         ###   ########.fr        #
+#    Updated: 2019/02/22 21:29:42 by bogoncha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,21 +44,19 @@ OBJ = ft_atoi.o ft_bzero.o ft_isalnum.o \
 	 ft_lstiter.o ft_lstmap.o ft_isblank.o ft_str_is_alpha.o ft_str_is_lowercase.o ft_str_is_numeric.o \
 	 ft_str_is_printable.o ft_str_is_uppercase.o ft_strlowcase.o ft_strupcase.o ft_size_of_word.o
 
-HDR = libft.h
-
 INCLUDES=./
+
+$(NAME): $(SRCS) libft.h
+	gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRCS)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 all: $(NAME)
 
-$(NAME): $(SRCS) libft.h
-	@gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRCS)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-
 clean:
-	@/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJ)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all

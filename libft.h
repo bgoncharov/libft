@@ -6,7 +6,7 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 21:11:26 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/19 21:38:18 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 21:50:03 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int					ft_str_is_printable(char *str);
 int					ft_str_is_uppercase(char *str);
 char				*ft_strlowcase(char *str);
 char				*ft_strupcase(char *str);
-size_t				ft_size_of_word(char const *str, char c);
+int					ft_size_of_word(char const *str, char c);
 
 #endif

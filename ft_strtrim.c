@@ -6,7 +6,7 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 23:57:38 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/20 19:26:02 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:38:46 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char const *str;
+	char const	*end;
 
 	if (s == NULL)
 		return (NULL);
-	while (*s == ' ' || *s == '\n' || *s == '\t')
+	while (*s == ' ' || *s == '\t' || *s == '\n')
 		s++;
 	if (*s == '\0')
 		return (ft_strnew(0));
-	str = s + ft_strlen(s) - 1;
-	while (ft_iswhitespace(*str))
-		str--;
-	return (ft_strsub(s, 0, str - s + 1));
+	end = s + ft_strlen(s) - 1;
+	while (*end == ' ' || *end == '\t' || *end == '\n')
+		end--;
+	return (ft_strsub(s, 0, end - s + 1));
 }

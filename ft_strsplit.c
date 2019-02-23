@@ -6,65 +6,74 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 11:51:17 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 16:46:30 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:48:23 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-size_t	ft_size_of_word(char const *str, char c)
+static int		ft_nb(char const *str, char c)
 {
-	size_t count;
+	int count;
+	int i;
 
+	i = 0;
 	count = 0;
-	while (*str != c)
+	while (str[i] != '\0')
 	{
-		str++;
+		while (str[i] == c)
+			i++;
+		if (str[i] == '\0')
+			return (count);
+		while (str[i] != c && str[i] != '\0')
+			i++;
 		count++;
 	}
 	return (count);
 }
 
-static int	fill_arr(char const *s, char *arr, unsigned int i, char c)
+static int		ft_wordlen(char const *str, char c)
 {
-	int j;
-
-	j = 0;
-	while (s[i] != c && s[i])
-	{
-		arr[j] = s[i];
-		i++;
-		j++;
-	}
-	arr[j] = '\0';
-	return (i);
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	int		i;
-	int		j;
-	char	**arr;
+	int size;
+	int i;
 
 	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	arr = (char **)malloc(sizeof(char *) * ft_strlen(s));
-	if (!arr)
-		return (NULL);
-	while (s[i] != '\0')
+	size = 0;
+	while (str[i] == c)
+		i++;
+	while (str[i] != c && str[i] != '\0')
 	{
-		while (s[i] == c && s[i] != '\0')
-			i++;
-		if (s[i] != '\0')
-		{
-			arr[j] = ft_strnew(ft_size_of_word(&s[i], c));
-			i = fill_arr(s, arr[j], i, c);
-			j++;
-		}
+		i++;
+		size++;
 	}
-	arr[j] = NULL;
-	return (arr);
+	return (size);
+}
+
+char			**ft_strsplit(char const *str, char c)
+{
+	char	**split;
+	int		i;
+	int		a;
+	int		b;
+
+	if (str == NULL)
+		return (NULL);
+	a = 0;
+	b = ft_nb(str, c);
+	i = 0;
+	split = malloc(sizeof(char *) * (b + 1));
+	if (split == NULL)
+		return (NULL);
+	while (b > 0)
+	{
+		while (*str == c)
+			str++;
+		split[a] = ft_strsub(str, i, ft_wordlen(str, c));
+		str = str + ft_wordlen(str, c);
+		a++;
+		b--;
+	}
+	split[a] = NULL;
+	return (split);
 }

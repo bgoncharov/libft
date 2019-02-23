@@ -6,7 +6,7 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 14:05:44 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 16:57:56 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/23 10:28:39 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 
 char	*ft_itoa(int n)
 {
-	char			*new;
-	unsigned int	i;
-	unsigned int	nbr;
-	unsigned int	size;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	if (n < 0)
-		nbr = (unsigned int)(n * -1);
-	else
-		nbr = (unsigned int)n;
-	size = (unsigned int)ft_getnbsize(nbr);
 	i = 0;
-	if (!(new = (char*)malloc(sizeof(char) * (size + 1 + (n < 0 ? 1 : 0)))))
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	j = ft_getnbsize(n);
+	str = (char *)malloc(sizeof(char) * (j + 1));
+	if (str == 0)
 		return (0);
-	if ((n < 0) && (new[i] = '-'))
-		size++;
-	i = size - 1;
-	while (nbr >= 10)
+	str[j] = 0;
+	if (n < 0)
 	{
-		new[i--] = (char)(nbr % 10 + 48);
-		nbr /= 10;
+		str[0] = '-';
+		n *= -1;
+		i += 1;
 	}
-	new[i] = (char)(nbr % 10 + 48);
-	new[size] = '\0';
-	return (new);
+	while (i < j--)
+	{
+		str[j] = (n % 10) + '0';
+		n /= 10;
+	}
+	return (str);
 }

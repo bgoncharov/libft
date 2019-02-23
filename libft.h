@@ -6,7 +6,7 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 21:11:26 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 21:50:03 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/23 10:28:07 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char				**ft_strsplit(char const *s, char c);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 char				*ft_itoa(int n);
-int					ft_getnbsize(unsigned int n);
+int					ft_getnbsize(int n);
 void				ft_putendl(char const *c);
 void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);

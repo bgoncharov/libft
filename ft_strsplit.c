@@ -6,74 +6,65 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 11:51:17 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 16:41:09 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:46:30 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int		ft_nb(char const *str, char c)
+size_t	ft_size_of_word(char const *str, char c)
 {
-	int count;
-	int i;
+	size_t count;
 
-	i = 0;
 	count = 0;
-	while (str[i] != '\0')
+	while (*str != c)
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] == '\0')
-			return (count);
-		while (str[i] != c && str[i] != '\0')
-			i++;
+		str++;
 		count++;
 	}
 	return (count);
 }
 
-static int		ft_wordlen(char const *str, char c)
+static int	fill_arr(char const *s, char *arr, unsigned int i, char c)
 {
-	int size;
-	int i;
+	int j;
 
-	i = 0;
-	size = 0;
-	while (str[i] == c)
-		i++;
-	while (str[i] != c && str[i] != '\0')
+	j = 0;
+	while (s[i] != c && s[i])
 	{
+		arr[j] = s[i];
 		i++;
-		size++;
+		j++;
 	}
-	return (size);
+	arr[j] = '\0';
+	return (i);
 }
 
-char			**ft_strsplit(char const *str, char c)
+char		**ft_strsplit(char const *s, char c)
 {
-	char	**split;
 	int		i;
-	int		a;
-	int		b;
+	int		j;
+	char	**arr;
 
-	if (str == NULL)
-		return (NULL);
-	a = 0;
-	b = ft_nb(str, c);
 	i = 0;
-	split = malloc(sizeof(char *) * (b + 1));
-	if (split == NULL)
+	j = 0;
+	if (!s)
 		return (NULL);
-	while (b > 0)
+	arr = (char **)malloc(sizeof(char *) * ft_strlen(s));
+	if (!arr)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		while (*str == c)
-			str++;
-		split[a] = ft_strsub(str, i, ft_wordlen(str, c));
-		str = str + ft_wordlen(str, c);
-		a++;
-		b--;
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		if (s[i] != '\0')
+		{
+			arr[j] = ft_strnew(ft_size_of_word(&s[i], c));
+			i = fill_arr(s, arr[j], i, c);
+			j++;
+		}
 	}
-	split[a] = NULL;
-	return (split);
+	arr[j] = NULL;
+	return (arr);
 }

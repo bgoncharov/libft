@@ -6,25 +6,21 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 14:42:28 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 16:03:57 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:59:18 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nbrlen(int n)
+int		ft_getnbsize(unsigned int n)
 {
-	int	len;
+	unsigned int size;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	if (n < len)
-		len += 1;
-	while (n != 0)
+	size = 0;
+	while (n >= 10)
 	{
-		n = n / 10;
-		len++;
+		n /= 10;
+		++size;
 	}
-	return (len);
+	return (size + 1);
 }

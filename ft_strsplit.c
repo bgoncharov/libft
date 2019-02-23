@@ -6,74 +6,69 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 11:51:17 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 16:48:23 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:04:11 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int		ft_nb(char const *str, char c)
+static int			ft_cntwrd(char const *s, char c)
 {
-	int count;
-	int i;
+	unsigned int	i;
+	int				cntr;
 
 	i = 0;
-	count = 0;
-	while (str[i] != '\0')
+	cntr = 0;
+	while (s[i])
 	{
-		while (str[i] == c)
+		while (s[i] == c)
 			i++;
-		if (str[i] == '\0')
-			return (count);
-		while (str[i] != c && str[i] != '\0')
+		if (s[i] != '\0')
+			cntr++;
+		while (s[i] && (s[i] != c))
 			i++;
-		count++;
 	}
-	return (count);
+	return (cntr);
 }
 
-static int		ft_wordlen(char const *str, char c)
+static char			*ft_strndup(const char *s, size_t n)
 {
-	int size;
-	int i;
+	char			*str;
 
-	i = 0;
-	size = 0;
-	while (str[i] == c)
-		i++;
-	while (str[i] != c && str[i] != '\0')
-	{
-		i++;
-		size++;
-	}
-	return (size);
-}
-
-char			**ft_strsplit(char const *str, char c)
-{
-	char	**split;
-	int		i;
-	int		a;
-	int		b;
-
+	str = (char *)malloc(sizeof(char) * n + 1);
 	if (str == NULL)
 		return (NULL);
-	a = 0;
-	b = ft_nb(str, c);
+	str = ft_strncpy(str, s, n);
+	str[n] = '\0';
+	return (str);
+}
+
+char				**ft_strsplit(char const *s, char c)
+{
+	int				i;
+	int				j;
+	int				k;
+	char			**tab;
+
 	i = 0;
-	split = malloc(sizeof(char *) * (b + 1));
-	if (split == NULL)
+	k = 0;
+	tab = (char **)malloc(sizeof(char *) * (ft_cntwrd(s, c)) + 1);
+	if (tab == NULL)
 		return (NULL);
-	while (b > 0)
+	while (s[i])
 	{
-		while (*str == c)
-			str++;
-		split[a] = ft_strsub(str, i, ft_wordlen(str, c));
-		str = str + ft_wordlen(str, c);
-		a++;
-		b--;
+		while (s[i] == c)
+			i++;
+		j = i;
+		while (s[i] && s[i] != c)
+			i++;
+		if (i > j)
+		{
+			tab[k] = ft_strndup(s + j, i - j);
+			k++;
+		}
 	}
-	split[a] = NULL;
-	return (split);
+	tab[k] = NULL;
+	return (tab);
 }

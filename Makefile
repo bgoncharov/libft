@@ -6,13 +6,13 @@
 #    By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/17 18:48:40 by bogoncha          #+#    #+#              #
-#    Updated: 2019/02/22 21:29:42 by bogoncha         ###   ########.fr        #
+#    Updated: 2019/02/22 22:26:29 by bogoncha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 
-SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c \
+SRCS=ft_atoi.c ft_bzero.c ft_isalnum.c \
 	 ft_isalpha.c ft_isascii.c ft_isdigit.c ft_islower.c ft_isprint.c \
 	 ft_isupper.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
 	 ft_memdel.c ft_memmove.c ft_memset.c \
@@ -28,7 +28,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c \
 	 ft_lstiter.c ft_lstmap.c ft_isblank.c ft_str_is_alpha.c ft_str_is_lowercase.c ft_str_is_numeric.c \
 	 ft_str_is_printable.c ft_str_is_uppercase.c ft_strlowcase.c ft_strupcase.c ft_size_of_word.c
 
-OBJ = ft_atoi.o ft_bzero.o ft_isalnum.o \
+OBJ=ft_atoi.o ft_bzero.o ft_isalnum.o \
 	 ft_isalpha.o ft_isascii.o ft_isdigit.o ft_islower.o ft_isprint.o \
 	 ft_isupper.o ft_memalloc.o ft_memccpy.o ft_memchr.o ft_memcmp.o ft_memcpy.o \
 	 ft_memdel.o ft_memmove.o ft_memset.o \

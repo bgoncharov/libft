@@ -6,22 +6,20 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 22:47:12 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/20 18:50:22 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:19:14 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_strclr(char *s)
+void	ft_strclr(char *s)
 {
-	unsigned int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
+	if (s != NULL)
 	{
-		s[i] = '\0';
-		i++;
+		while (*s)
+		{
+			*s = '\0';
+			s++;
+		}
 	}
 }

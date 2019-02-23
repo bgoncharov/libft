@@ -6,7 +6,7 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 11:51:17 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/22 17:22:16 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:28:04 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	fill_arr(char const *s, char *arr, unsigned int i, char c)
 	{
 		arr[j] = s[i];
 		i++;
-		++j;
+		j++;
 	}
 	arr[j] = '\0';
 	return (i);

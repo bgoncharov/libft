@@ -6,15 +6,25 @@
 /*   By: bogoncha <bogoncha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 15:33:53 by bogoncha          #+#    #+#             */
-/*   Updated: 2019/02/18 14:36:18 by bogoncha         ###   ########.fr       */
+/*   Updated: 2019/02/23 10:48:58 by bogoncha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	ft_putendl(char const *c)
+void	ft_putendl(char const *s)
 {
-	if (!c)
-		return ;
-	ft_putendl_fd(c, 1);
+	int i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			write(1, &s[i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
 }
